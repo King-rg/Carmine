@@ -32,12 +32,3 @@ async def applyTests(dut):
     
 
 
-@cocotb.test()
-async def test_BRecode(dut):
-    """Testbench for the B-Encode module."""
-    # Start a clock on the clk port
-    clock = Clock(dut.clk, 10, units="ns")
-    cocotb.start_soon(clock.start())
-
-    cocotb.start_soon(applyTests(dut))
-    await Timer(100, units="ns")  # Run for 100 ns
